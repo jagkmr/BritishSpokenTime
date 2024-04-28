@@ -1,5 +1,10 @@
 package org.example.interfaces;
 
-public interface Validator<T>{
+/**
+ * Validator interface to validate input "<B>T</B>"
+ *
+ * @param <T>
+ */
+public interface Validator<T> {
     boolean validate(T input);
 }

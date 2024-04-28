@@ -1,5 +1,8 @@
 package org.example.utils;
 
+/**
+ * NumberSpeller utils, spells the number to words
+ */
 public class NumberSpeller {
 
     private static String[] oneToNine = {

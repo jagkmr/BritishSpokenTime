@@ -7,8 +7,12 @@ import org.example.utils.NumberSpeller;
 
 import java.util.Random;
 
+/**
+ * Second half timeSpeller implementation
+ */
 public class SecondHalfTimeSpeller implements TimeSpeller {
     private final Random random = new Random();
+
     @Override
     public String spell(Time time) {
 
@@ -19,11 +23,12 @@ public class SecondHalfTimeSpeller implements TimeSpeller {
 
         String spelledTime;
 
-        if (randomInt == 0){
-            spelledTime =  NumberSpeller.spell(hour) + Constants.SPACE + NumberSpeller.spell(minute);
+        // Added randomness to spell time in different format
+        if (randomInt == 0) {
+            spelledTime = NumberSpeller.spell(hour) + Constants.SPACE + NumberSpeller.spell(minute);
         }
         else {
-            switch (minute){
+            switch (minute) {
                 case 45: {
                     spelledTime = Constants.QUARTER + Constants.SPACE + Constants.TO + Constants.SPACE + NumberSpeller.spell(hour + 1);
                     break;

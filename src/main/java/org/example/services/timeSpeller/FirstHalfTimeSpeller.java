@@ -8,10 +8,11 @@ import org.example.utils.NumberSpeller;
 import java.util.Random;
 import java.util.function.Predicate;
 
+/**
+ * First half timeSpeller implementation
+ */
 public class FirstHalfTimeSpeller implements TimeSpeller {
     private final Random random = new Random();
-
-    private Predicate<Time> minuteLessThanTen = time -> time.getMinute() > 0 && time.getMinute() < 10;
 
     @Override
     public String spell(Time time) {
@@ -23,8 +24,9 @@ public class FirstHalfTimeSpeller implements TimeSpeller {
 
         String spelledTime;
 
+        // Added randomness to spell time in different format
         if (randomInt == 0) {
-            if (minuteLessThanTen.test(time)) {
+            if (Constants.MINUTE_LESS_THAN_TEN.test(time)) {
                 spelledTime = NumberSpeller.spell(hour) + Constants.SPACE + Constants.OH + Constants.SPACE + NumberSpeller.spell(minute);
             }
             else {

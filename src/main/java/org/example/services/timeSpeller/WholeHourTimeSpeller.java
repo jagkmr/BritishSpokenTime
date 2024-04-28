@@ -5,6 +5,10 @@ import org.example.interfaces.TimeSpeller;
 import org.example.model.Time;
 import org.example.utils.NumberSpeller;
 
+/**
+ * Spells whole hour time.
+ * Ex: 1:00 - one o'clock
+ */
 public class WholeHourTimeSpeller implements TimeSpeller {
     @Override
     public String spell(Time time) {

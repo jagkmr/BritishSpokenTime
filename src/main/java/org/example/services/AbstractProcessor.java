@@ -5,13 +5,18 @@ import org.example.interfaces.Processor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Abstract processor binds together the Processor interface methods
+ * @param <T>
+ * @param <R>
+ */
 public abstract class AbstractProcessor<T, R> implements Processor<T, R> {
 
     private final Logger LOG = LoggerFactory.getLogger(AbstractProcessor.class);
 
-    public void processInput(T input){
+    public void processInput(T input) {
         boolean isValid = validate(input);
-        if (!isValid){
+        if (!isValid) {
             // throw exception
             LOG.error("Received invalid input=" + input);
             throw new ValidationException(input + " is invalid");

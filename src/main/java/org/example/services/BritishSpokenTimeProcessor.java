@@ -9,6 +9,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
+/**
+ * BritishSpokenTimeProcessor implementation, it validates the input time, processes it and also can publish the output
+ * to multiple publisher interfaces.
+ */
 public class BritishSpokenTimeProcessor extends AbstractProcessor<String, String> {
 
     Logger LOG = LoggerFactory.getLogger(BritishSpokenTimeProcessor.class);
