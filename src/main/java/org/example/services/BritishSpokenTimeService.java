@@ -9,15 +9,12 @@ import java.util.function.Predicate;
 
 public class BritishSpokenTimeService {
 
-    private static Predicate<Time> midnight = time -> time.getHour() == 0 && time.getMinute()==0;
-    private static Predicate<Time> noon = time -> time.getHour() == 12 && time.getMinute()==0;
-
     public String processTime(Time time){
 
-        if (midnight.test(time)){
+        if (Constants.MIDNIGHT_PREDICATE.test(time)){
             return Constants.MIDNIGHT;
         }
-        if (noon.test(time)){
+        if (Constants.NOON_PREDICATE.test(time)){
             return Constants.NOON;
         }
 

@@ -23,12 +23,13 @@ public class BritishSpokenTimeProcessor extends AbstractProcessor<String, String
 
     @Override
     public boolean validate(String input) {
+        LOG.info("Validating");
         return validator.validate(input);
     }
 
     @Override
     public String process(String input) {
-        LOG.info("Started process");
+        LOG.info("Processing");
 
         String[] timeFormat = input.split(":");
         Time time = new Time();
@@ -40,6 +41,7 @@ public class BritishSpokenTimeProcessor extends AbstractProcessor<String, String
 
     @Override
     public void postProcess(String output) {
+        LOG.info("Post processing");
         if (CollectionUtils.isNotEmpty(publishers)) {
             publishers.forEach(publisher -> publisher.publish(output));
         }
