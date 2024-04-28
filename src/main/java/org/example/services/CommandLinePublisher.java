@@ -5,6 +5,7 @@ import org.example.interfaces.Publisher;
 public class CommandLinePublisher implements Publisher<String> {
     @Override
     public boolean publish(String output) {
-        return false;
+        System.out.println(output);
+        return true;
     }
 }

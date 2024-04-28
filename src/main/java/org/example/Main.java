@@ -1,22 +1,27 @@
 package org.example;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.config.Configurator;
+import org.example.interfaces.Publisher;
+import org.example.services.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
-        String time = "01:32";
-        String[] arr = time.split(":");
-        String hour = arr[0];
-        String minute = arr[1];
+        Configurator.setRootLevel(Level.DEBUG);
+
+        TwelveHourTimeValidator twelveHourTimeValidator = new TwelveHourTimeValidator();
+        List<Publisher<String>> publishers = new ArrayList<>();
+
+        Publisher<String> commandLinePublisher = new CommandLinePublisher();
+        publishers.add(commandLinePublisher);
 
 
-
-
-        System.out.println("Hello world!");
-
-        //check minute and then hour
-        // if minute =0
-        // 0<min<30
-        // min==30
-        // 30<min<59
+        AbstractProcessor<String, String> processor = new BritishSpokenTimeProcessor(twelveHourTimeValidator, publishers);
+        CommandLineInput commandLineInput = new CommandLineInput();
+        commandLineInput.getInputAndProcess(processor);
     }
 }
