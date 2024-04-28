@@ -26,7 +26,7 @@ public class CommandLineInput implements InputProcessor {
                         processor.processInput(input.trim());
                     }
                     catch (Exception e) {
-                        System.out.println("Exception occurred, please enter valid input in format HH:MM");
+                        System.out.println("Exception occurred, please enter valid input in format HH:MM (or) type exit");
                     }
                 }
                 input = buffReader.readLine();

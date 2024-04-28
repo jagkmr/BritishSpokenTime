@@ -12,7 +12,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Configurator.setRootLevel(Level.OFF);
+        Configurator.setRootLevel(Level.valueOf(System.getProperty("logLevel", "OFF")));
 
         TwelveHourTimeValidator twelveHourTimeValidator = new TwelveHourTimeValidator();
         List<Publisher<String>> publishers = new ArrayList<>();

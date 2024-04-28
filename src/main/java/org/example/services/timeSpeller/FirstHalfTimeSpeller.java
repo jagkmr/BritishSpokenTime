@@ -3,33 +3,50 @@ package org.example.services.timeSpeller;
 import org.example.constants.Constants;
 import org.example.interfaces.TimeSpeller;
 import org.example.model.Time;
-import org.example.utils.NumbersToWords;
+import org.example.utils.NumberSpeller;
 
 import java.util.Random;
+import java.util.function.Predicate;
 
 public class FirstHalfTimeSpeller implements TimeSpeller {
+    private final Random random = new Random();
+
+    private Predicate<Time> minuteLessThanTen = time -> time.getMinute() > 0 && time.getMinute() < 10;
+
     @Override
     public String spell(Time time) {
 
         int hour = time.getHour();
         int minute = time.getMinute();
 
-        String timeSpelled;
+        int randomInt = random.nextInt(2);
 
-        switch (minute) {
-            case 15: {
-                timeSpelled = Constants.QUARTER + Constants.SPACE + Constants.PAST + Constants.SPACE + NumbersToWords.generate(hour);
-                break;
+        String spelledTime;
+
+        if (randomInt == 0) {
+            if (minuteLessThanTen.test(time)) {
+                spelledTime = NumberSpeller.spell(hour) + Constants.SPACE + Constants.OH + Constants.SPACE + NumberSpeller.spell(minute);
             }
-            case 30: {
-                timeSpelled = Constants.HALF + Constants.SPACE + Constants.PAST + Constants.SPACE + NumbersToWords.generate(hour);
-                break;
+            else {
+                spelledTime = NumberSpeller.spell(hour) + Constants.SPACE + NumberSpeller.spell(minute);
             }
-            default: {
-                timeSpelled = NumbersToWords.generate(minute) + Constants.SPACE + Constants.PAST + Constants.SPACE + NumbersToWords.generate(hour);
+        }
+        else {
+            switch (minute) {
+                case 15: {
+                    spelledTime = Constants.QUARTER + Constants.SPACE + Constants.PAST + Constants.SPACE + NumberSpeller.spell(hour);
+                    break;
+                }
+                case 30: {
+                    spelledTime = Constants.HALF + Constants.SPACE + Constants.PAST + Constants.SPACE + NumberSpeller.spell(hour);
+                    break;
+                }
+                default: {
+                    spelledTime = NumberSpeller.spell(minute) + Constants.SPACE + Constants.PAST + Constants.SPACE + NumberSpeller.spell(hour);
+                }
             }
         }
 
-        return timeSpelled;
+        return spelledTime;
     }
 }
