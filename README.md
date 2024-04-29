@@ -1,5 +1,19 @@
 # BritishSpokenTime
 
+### Problem Statement:
+
+In British English, the expression "half [hour]" is used colloquially to denote 30 minutes past the hour. For example, "
+half ten" means 10:30
+(without specifying morning or night). This is itself an abbreviation of an older colloquialism, "half 'past' ten". The
+abbreviation can cause
+misunderstanding with non-British English speakers as this contrasts with many European languages, where the same type
+of expression
+denotes 30 minutes before the hour. For example, in Czech, půl desáté ("half ten") means 9:30. Another example, in
+German, halb zehn
+("half ten") means 9:30. Write a program in Java that outputs the British spoken form of a time given as input.
+For example, the program will get 12:00 as input and
+will give noon as output.
+
 ### Overview of the solution:
 
 The solution outputs the british spoken time for a given input time.

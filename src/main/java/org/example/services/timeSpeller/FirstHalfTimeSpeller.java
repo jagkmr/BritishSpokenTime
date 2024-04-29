@@ -6,7 +6,6 @@ import org.example.model.Time;
 import org.example.utils.NumberSpeller;
 
 import java.util.Random;
-import java.util.function.Predicate;
 
 /**
  * First half timeSpeller implementation
